@@ -29,9 +29,10 @@ FetchContent_MakeAvailable(sdl2)
 
 add_executable(RTIOW
     src/main.cpp
-    src/test.ixx
+    src/presenter.ixx
+    src/types.ixx
 )
-target_link_libraries(${PROJECT_NAME} PUBLIC SDL2-static SDL2main)
+target_link_libraries(RTIOW PUBLIC SDL2-static SDL2main)
 
 # Only support statically linking for now.
 target_compile_definitions(RTIOW PRIVATE
@@ -43,6 +44,6 @@ target_compile_features(RTIOW PRIVATE cxx_std_20)
 
 target_compile_options(RTIOW PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:
-        /W4 /WX /permissive- /Z7 /MT /MP /Bt+>)
+        /W4 /WX /permissive- /Z7 /MP /Bt+>)
 
 set_target_properties(RTIOW PROPERTIES INTERPROCEDURAL_OPTIMIZATION ON)

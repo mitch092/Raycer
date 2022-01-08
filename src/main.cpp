@@ -1,7 +1,7 @@
-#include <iostream>
-import test;
+import presenter;
 
 int main() {
-    std::cout << test() << std::endl;
-    std::cin.get();
+    Presenter presenter("RTIOW", 500, 500);
+    while (presenter.is_running()) {
+    }
 }

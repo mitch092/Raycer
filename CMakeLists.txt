@@ -31,6 +31,7 @@ add_executable(RTIOW
     src/main.cpp
     src/presenter.ixx
     src/types.ixx
+    src/vec2d.ixx
 )
 target_link_libraries(RTIOW PUBLIC SDL2-static SDL2main)
 

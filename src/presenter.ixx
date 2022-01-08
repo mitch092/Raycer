@@ -1,23 +1,23 @@
 module;
 #include <SDL.h>
 export module presenter;
-import types;
+import vec2d;
 
 export class Presenter {
    public:
-    Presenter(const char* name, u16 width, u16 height)
+    Presenter(const char* name, Vec2d<u16> dimensions)
         : window(nullptr), renderer(nullptr), texture(nullptr) {
         // Propogating errors (w/o exceptions) is such a drag. Just add assertions and keep them in the release builds :/
         int init = SDL_Init(SDL_INIT_VIDEO);
         asrt(init >= 0);
 
-        window = SDL_CreateWindow(name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+        window = SDL_CreateWindow(name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, dimensions.get_x(), dimensions.get_y(), SDL_WINDOW_SHOWN);
         asrt(window != nullptr);
 
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
         asrt(renderer != nullptr);
 
-        texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, width, height);
+        texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, dimensions.get_x(), dimensions.get_y());
         asrt(texture != nullptr);
     }
 

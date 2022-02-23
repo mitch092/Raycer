@@ -9,7 +9,7 @@ endif()
 set(CMAKE_CXX_SYSROOT_FLAG_CODE "list(APPEND CMAKE_CXX_SOURCE_FILE_EXTENSIONS ixx)")
 
 project(
-    "RTIOW"
+    "Raycer"
     VERSION 0.1.0
     LANGUAGES CXX
 )
